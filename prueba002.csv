@@ -1,0 +1,17 @@
+ID,nombre,apellido,edad,puesto,salario
+1,Victor,Lux,24,puesto 1,3500
+2,Carlos,Estrada,23,puesto 1,4000
+3,Juan,Torres,25,puesto 2,3600
+4,Pedro,Lopez,28,puesto 3,3700
+5,Manuel,Zembrano,24,puesto 4,3333
+6,Maria,Ramirez,26,puesto 5,3000
+7,Hilary,Clintton,23,puesto 4,4000
+8,Mario,de Leon,28,puesto 3,5000
+9,Cesia,Juracan,20,puesto 1,5500
+10,Julio,Lopez,24,puesto 1,4000
+1,Victor,Lux;24,puesto 1,3500
+1,Victor,Lux;24,puesto 1,3500
+1,Victor,Lux;24,puesto 1,3500
+7,Hilary,Clintton,23,puesto 4,4000
+7,Hilary,Clintton,23,puesto 4,4000
+7,Hilary,Clintton,23,puesto 4,4000
