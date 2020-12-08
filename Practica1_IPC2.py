@@ -12,7 +12,11 @@ def pedirMenuEntrevistas():
     return num
 
 def leerArchivo():
-    print("cargando archivo ....")
+    ruta = input("Ingresar ruta del archivo: ")
+    archivo = open(ruta, 'r')
+    print("cargando archivo ...."+ruta)
+    print(archivo.read())
+
 
 def calculo():
     print("calculo")
@@ -28,7 +32,6 @@ while True:
     opcion = pedirMenuEntrevistas()
    #print(opcion)
     if opcion == 1:
-       print("leer archivo csv")
        leerArchivo()
     elif opcion == 2:
        print("calculo de datos")
