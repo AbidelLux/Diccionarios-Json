@@ -1,7 +1,8 @@
-
 import json
 cont = ""
 dic1 = {}
+dicCalculo = {}
+dicAux ={}
 
 def pedirMenuEntrevistas():
 
@@ -22,18 +23,13 @@ def leerArchivo():
     arch = open(ruta, 'r')
     print("cargando archivo "+ruta)
     contenido = arch.read()
-
     arch.close()
-    return contenido
-
-
-def calculo(leer):
     posicionID = 0
     posicionPuesto=0
     posicionEdad =0
     posicionSalario =0
     separador = "\n"
-    lista = leer.split(separador)
+    lista = contenido.split(separador)
     contador =0
     for i in lista[0].split(","):
         contador = contador+1
@@ -66,18 +62,47 @@ def calculo(leer):
 
         contador2=contador2+1
 
+    for c in dic1.keys():
+        print(str(c)+",",dic1[c]['NOMBRE']+",",dic1[c]['APELLIDO']+",",str(dic1[c]['EDAD'])+",",dic1[c]['PUESTO']+",",str(dic1[c]['SALARIO']))
+
         #if j == lista[0]:
         #   contador2 = contador2 -1
         #   print("")
     #print(dic1)
+    return dic1
 
-    #print(leer)
 
-def generarArchivo():
+def calculo(dicEntrante):
+    if dicEntrante == {}:
+        print("Por Favor ingresar un archivo en la opcion 1")
+    else:
+        #Graba en dicAux los puestos existentes
+        for i in dicEntrante.keys():
+            dicAux[dicEntrante[i]['PUESTO']]={'Candidatos':0,"Edad Promedio":0,"Prentencion Salarial":0}
+        #Calculo de suma de todas las edades, suma de todos los salario, conteo de candidatos
+        for a in dicAux.keys():
+            for b in dicEntrante.keys():
+                if dicEntrante[b]['PUESTO'] == a:
+                    dicAux[a]['Candidatos'] = dicAux[a]['Candidatos'] +1
+                    dicAux[a]['Edad Promedio'] = dicEntrante[b]['EDAD'] + dicAux[a]['Edad Promedio']
+                    dicAux[a]['Prentencion Salarial'] = dicEntrante[b]['SALARIO'] + dicAux[a]['Prentencion Salarial']
+        #Calcular promedio de Edad y de salarios
+        for c in dicAux.keys():
+                dicAux[c]['Edad Promedio'] = dicAux[c]['Edad Promedio'] / dicAux[c]['Candidatos']
+                dicAux[c]['Prentencion Salarial'] = dicAux[c]['Prentencion Salarial'] / dicAux[c]['Candidatos']
+
+
+        print(dicAux)
+    return dicAux
+
+def generarArchivo(archivo):
     print("generando ....")
+    with open('archivo.json','w') as file:
+        json.dump(archivo,file,indent=3)
 
 def menuPrincipal():
-
+    cont={}
+    final = {}
     while True:
         print("1) Lectura de archivo csv ")
         print("2) Calculo de datos")
@@ -89,10 +114,11 @@ def menuPrincipal():
            cont= leerArchivo()
         elif opcion == 2:
            print("calculo de datos")
-           calculo(cont)
+           final=calculo(cont)
         elif opcion == 3:
            print("archivo JSON")
-           generarArchivo()
+           generarArchivo(final)
+
         elif opcion == 4:
            break
         else:

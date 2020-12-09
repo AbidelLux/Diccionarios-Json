@@ -1,0 +1,27 @@
+{
+   "puesto 1": {
+      "Candidatos": 4,
+      "Edad Promedio": 22.75,
+      "Prentencion Salarial": 4250.0
+   },
+   "puesto 2": {
+      "Candidatos": 1,
+      "Edad Promedio": 25.0,
+      "Prentencion Salarial": 3600.0
+   },
+   "puesto 3": {
+      "Candidatos": 2,
+      "Edad Promedio": 28.0,
+      "Prentencion Salarial": 4350.0
+   },
+   "puesto 4": {
+      "Candidatos": 2,
+      "Edad Promedio": 23.5,
+      "Prentencion Salarial": 3666.5
+   },
+   "puesto 5": {
+      "Candidatos": 1,
+      "Edad Promedio": 26.0,
+      "Prentencion Salarial": 3000.0
+   }
+}
