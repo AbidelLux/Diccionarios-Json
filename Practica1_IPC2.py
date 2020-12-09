@@ -1,7 +1,7 @@
 
 import json
 cont = ""
-calc = ""
+dic1 = {}
 
 def pedirMenuEntrevistas():
 
@@ -10,7 +10,7 @@ def pedirMenuEntrevistas():
     correcionOpc = True
     while(correcionOpc):
         try:
-            num = int(input("Introducior opcion: "))
+            num = int(input("Introducir opcion: "))
             correcionOpc = False
         except ValueError:
             print("Por favor ingresar un numero entero")
@@ -22,13 +22,56 @@ def leerArchivo():
     arch = open(ruta, 'r')
     print("cargando archivo "+ruta)
     contenido = arch.read()
-    print(contenido)
+
     arch.close()
     return contenido
 
 
 def calculo(leer):
-    print(leer)
+    posicionID = 0
+    posicionPuesto=0
+    posicionEdad =0
+    posicionSalario =0
+    separador = "\n"
+    lista = leer.split(separador)
+    contador =0
+    for i in lista[0].split(","):
+        contador = contador+1
+        if i == "ID":
+            posicionID =contador-1
+            #(posicionID)
+        elif i == "EDAD":
+            posicionEdad = contador-1
+        elif i == "PUESTO":
+            posicionPuesto = contador-1
+        elif i == "SALARIO":
+            posicionSalario = contador-1
+        elif i == "NOMBRE":
+            posicionNombre = contador-1
+        elif i == "APELLIDO":
+            posicionApellido = contador-1
+        #print(i)
+    contador2 =0
+    for j in lista:
+        #print(dic1)
+        lista2 = lista[contador2].split(",")
+        #print(lista2)
+        if contador2 ==1:
+            dic1 = {int(lista2[posicionID]):{"NOMBRE":lista2[posicionNombre],"APELLIDO":lista2[posicionApellido],"EDAD":int(lista2[posicionEdad]),"PUESTO":lista2[posicionPuesto],"SALARIO":int(lista2[posicionSalario])}}
+            #print(lista2[posicionEdad])
+        elif contador2 >1:
+
+            dic1[int(lista2[posicionID])] = {"NOMBRE":lista2[posicionNombre],"APELLIDO":lista2[posicionApellido],"EDAD":int(lista2[posicionEdad]),"PUESTO":lista2[posicionPuesto],"SALARIO":int(lista2[posicionSalario])}
+            #print(dic1)
+
+        contador2=contador2+1
+
+        #if j == lista[0]:
+        #   contador2 = contador2 -1
+        #   print("")
+    #print(dic1)
+
+    #print(leer)
 
 def generarArchivo():
     print("generando ....")
